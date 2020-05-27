@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+include("TableTop.php");
+include("ToyRobot.php");
+include("Simulator.php");
+
+use MayuraTestToyRobot\TableTop;
+use MayuraTestToyRobot\ToyRobot;
+use MayuraTestToyRobot\Simulator;
+
+// Create robot, board and simulator
+$robot = new ToyRobot(new TableTop(5, 5));
+$simulator = new Simulator($robot);
+
+// Parse command line arguments and run
+$source = $argv[1] ?? 'php://stdin';
+$simulator->run($source);
+?>
